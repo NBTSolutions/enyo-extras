@@ -37,7 +37,10 @@ enyo.kind({
         this.$.popup.destroyClientControls();
         var c = [];
         for (var i = 0; i < this.values.length; i++) {
-            c.push({content: this.values[i]});
+			      if (typeof(this.values[i]) == 'string') {
+				        this.values[i] = {content: this.values[i]};
+            }
+            c.push(this.values[i]);
         }
         this.$.popup.createComponents(c);
         this.$.popup.render();
